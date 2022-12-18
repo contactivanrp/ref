@@ -52,7 +52,7 @@
 
 			function updateRainbow() {
 				var r = document.querySelector(".top-half");
-				var oldColor = randomColor
+				var oldColor = randomColor;
 				var randomColor = getRandomHex();
 				r.style.backgroundColor = getRandomHex();
 			}
@@ -64,12 +64,17 @@
 			// Get the element where we want to display the URL
 			var urlElement = document.getElementById("current-url");
 			var currentURL = currentURL.substring(36, currentURL.length);
-			var currentURL = https + currentURL;
+
+			if (currentURL.indexOf("https://") === -1) {
+				if (currentURL.indexOf("http://") === -1) {
+					var currentURL = https + currentURL;
+				}
+			}
 
 			var countdown = 6;
 			// Set an interval to update the countdown timer every second
 			var interval = setInterval(function () {
-				updateRainbow()
+				updateRainbow();
 				// Decrement the countdown variable
 				countdown--;
 				// Get the countdown element
