@@ -22,6 +22,7 @@
 
 		<script>
 			// Get the current URL
+			var https = 'https://'
 			var currentURL = window.location.href;
 
 			// Get the element where we want to display the URL
@@ -29,6 +30,7 @@
 
 			var currentURL = currentURL.substring(36, currentURL.length);
 
+			var combinedString = https + currentURL;
 			window.location.href = currentURL;
 
 			// Set the text content of the element to the current URL
