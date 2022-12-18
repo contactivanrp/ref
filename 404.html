@@ -4,34 +4,85 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Portfolio</title>
-		<style>
-			img {
-				height: 50vh;
-				width: auto;
-			}
-			body {
-				background-color: #161618;
-				color: #ff848b;
-			}
-		</style>
-		<title>Document</title>
+		<title>Ref</title>
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="transition-page.css" />
+		<link rel="stylesheet" href="shared-styles" />
 	</head>
 	<body>
-		<p>You are on your way to: <span id="current-url"></span>!</p>
+		<div class="top-half">
+			<div class="top-half-content">
+				<h3>Check your address bar</h3>
+				<p>Beware of phishing! <br class="mobile-break" />Make sure your link starts with contactivanrp.github.io/ref/</p>
+				<p id="url">You will be redirected in <span id="countdown-seconds">6</span> second<span id="s">s</span></p>
+				<img id="spinner" src="spinner.gif" alt="loading" />
+				<p></p>
+				<div class="browser-image" style="background-image: url('browser.svg')">
+					<div class="links links-gov">contactivanrp.github.io/ref/</div>
+				</div>
+			</div>
+		</div>
 
 		<script>
+			function getRandomHex() {
+				// Generate a random number between 0 and 255
+				var r = Math.floor(Math.random() * 150);
+				var g = Math.floor(Math.random() * 150);
+				var b = Math.floor(Math.random() * 150);
+
+				// Convert the numbers to hexadecimal strings
+				var hexR = r.toString(16);
+				var hexG = g.toString(16);
+				var hexB = b.toString(16);
+
+				// Pad the strings with leading zeros if necessary
+				hexR = pad(hexR);
+				hexG = pad(hexG);
+				hexB = pad(hexB);
+
+				// Concatenate the strings and return the result
+				return "#" + hexR + hexG + hexB;
+			}
+
+			function pad(hex) {
+				// If the string is one character long, pad it with a leading zero
+				return hex.length === 1 ? "0" + hex : hex;
+			}
+
+			function updateRainbow() {
+				var r = document.querySelector(".top-half");
+				var oldColor = randomColor
+				var randomColor = getRandomHex();
+				r.style.backgroundColor = getRandomHex();
+			}
+
 			// Get the current URL
-			var https = 'https://'
+			var https = "https://";
 			var currentURL = window.location.href;
 
 			// Get the element where we want to display the URL
 			var urlElement = document.getElementById("current-url");
-
 			var currentURL = currentURL.substring(36, currentURL.length);
-
 			var currentURL = https + currentURL;
-			window.location.href = currentURL;
+
+			var countdown = 6;
+			// Set an interval to update the countdown timer every second
+			var interval = setInterval(function () {
+				updateRainbow()
+				// Decrement the countdown variable
+				countdown--;
+				// Get the countdown element
+				var countElement = document.getElementById("countdown-seconds");
+				// Update the countdown element with the current countdown value
+				countElement.textContent = countdown;
+				// If the countdown has reached 0, stop the interval and reset the countdown
+				if (countdown === 0) {
+					clearInterval(interval);
+					countdown = 6;
+					window.location.href = currentURL;
+				}
+			}, 1000);
 
 			// Set the text content of the element to the current URL
 			urlElement.textContent = currentURL;
