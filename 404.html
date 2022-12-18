@@ -9,6 +9,9 @@
 		<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="transition-page.css" />
 		<link rel="stylesheet" href="shared-styles" />
+		<script defer>
+			document.body.style.display = "none";
+		</script>
 	</head>
 	<body>
 		<div class="top-half">
@@ -77,6 +80,8 @@
 				var currentURL = addhttps + currentURL;
 				window.location.href = currentURL;
 			}
+
+			document.body.style.display = "";
 
 			if (currentURL.indexOf("https://") === -1) {
 				if (currentURL.indexOf("http://") === -1) {
