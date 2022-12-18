@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Portfolio</title>
+		<style>
+			img {
+				height: 50vh;
+				width: auto;
+			}
+			body {
+				background-color: #161618;
+				color: #ff848b;
+			}
+		</style>
+		<title>Document</title>
+	</head>
+	<body>
+		<p>You are on your way to: <span id="current-url"></span>!</p>
+
+		<script>
+			// Get the current URL
+			var currentURL = window.location.href;
+
+			// Get the element where we want to display the URL
+			var urlElement = document.getElementById("current-url");
+
+			var currentURL = currentURL.substring(36, currentURL.length);
+
+			window.location.href = currentURL;
+
+			// Set the text content of the element to the current URL
+			urlElement.textContent = currentURL;
+		</script>
+	</body>
+</html>
