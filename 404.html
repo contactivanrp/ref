@@ -59,11 +59,24 @@
 
 			// Get the current URL
 			var https = "https://";
+			var addhttps = "https://contactivanrp.github.io/ref/";
 			var currentURL = window.location.href;
 
 			// Get the element where we want to display the URL
 			var urlElement = document.getElementById("current-url");
 			var currentURL = currentURL.substring(36, currentURL.length);
+
+			if (currentURL.indexOf("https://") !== -1) {
+				var currentURL = currentURL.substring(8, currentURL.length);
+				var currentURL = addhttps + currentURL;
+				window.location.href = currentURL;
+			}
+
+			if (currentURL.indexOf("http://") !== -1) {
+				var currentURL = currentURL.substring(7, currentURL.length);
+				var currentURL = addhttps + currentURL;
+				window.location.href = currentURL;
+			}
 
 			if (currentURL.indexOf("https://") === -1) {
 				if (currentURL.indexOf("http://") === -1) {
