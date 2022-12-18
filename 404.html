@@ -81,11 +81,10 @@
 				window.location.href = currentURL;
 			}
 
-			document.body.style.display = "";
-
 			if (currentURL.indexOf("https://") === -1) {
 				if (currentURL.indexOf("http://") === -1) {
 					var currentURL = https + currentURL;
+					document.body.style.display = "";
 				}
 			}
 
