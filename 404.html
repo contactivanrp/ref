@@ -20,14 +20,14 @@
 
 			if (currentURL.indexOf("https://") !== -1) {
 				var currentURL = currentURL.substring(8, currentURL.length);
-				var currentURL = currentURL.replace(/\//g, '&#47;');
+				var currentURL = currentURL.replace(/\//g, "&#47;");
 				var currentURL = addhttps + currentURL;
 				window.location.href = currentURL;
 			}
 
 			if (currentURL.indexOf("http://") !== -1) {
 				var currentURL = currentURL.substring(7, currentURL.length);
-				var currentURL = currentURL.replace(/\//g, '&#47;');
+				var currentURL = currentURL.replace(/\//g, "&#47;");
 				var currentURL = addhttps + currentURL;
 				window.location.href = currentURL;
 			}
@@ -88,13 +88,19 @@
 			// Get the element where we want to display the URL
 			var urlElement = document.getElementById("current-url");
 			var currentURL = currentURL.substring(36, currentURL.length);
-			var currentURL = currentURL.replace(/&#47;/g, '/');
+			var currentURL = currentURL.replace(/&#47;/g, "/");
 
 			if (currentURL.indexOf("https://") === -1) {
 				if (currentURL.indexOf("http://") === -1) {
 					var currentURL = https + currentURL;
 				}
 			}
+
+			function handleClick() {
+				window.location.href = currentURL;
+			}
+
+			document.addEventListener("click", handleClick);
 
 			var countdown = 6;
 			// Set an interval to update the countdown timer every second
